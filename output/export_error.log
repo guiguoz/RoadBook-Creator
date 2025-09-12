@@ -1,0 +1,92 @@
+
+=== Erreur export PDF ===
+Traceback (most recent call last):
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 133, in export
+    kif = KeepInFrame(content_width, content_height, [main_table], mode='scale')
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\flowables.py", line 1132, in __init__
+    assert mode in ('error','overflow','shrink','truncate'), '%s invalid mode value %s' % (self.identity(),mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <KeepInFrame at 0x1e959749940> size= maxWidth=510.2362x maxHeight=756.8504 invalid mode value scale
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Vikazim\roadbook_app\src\main.py", line 306, in exportPDF
+    filename = exporter.export()
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 139, in export
+    raise Exception(f"Erreur lors de la création du PDF : {str(e)}")
+Exception: Erreur lors de la création du PDF : <KeepInFrame at 0x1e959749940> size= maxWidth=510.2362x maxHeight=756.8504 invalid mode value scale
+
+=== Erreur export PDF ===
+Traceback (most recent call last):
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 117, in export
+    cell = self._build_vignette_cell(
+        v,
+    ...<4 lines>...
+        style_obs
+    )
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 239, in _build_vignette_cell
+    obs_para = Paragraph(obs_text, style_obs_dyn)
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paragraph.py", line 1809, in __init__
+    self._setup(text, style, bulletText or getattr(style,'bulletText',None), frags, cleanBlockQuotedText)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paragraph.py", line 1830, in _setup
+    style, frags, bulletTextFrags = _parser.parse(text,style)
+                                    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paraparser.py", line 3218, in parse
+    return self._complete_parse()
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paraparser.py", line 3152, in _complete_parse
+    self._syntax_error('parse ended with %d unclosed tags\n %s' % (len(self._stack),'\n '.join((x.__tag__ for x in reversed(self._stack)))))
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paraparser.py", line 2779, in _syntax_error
+    raise ValueError('paraparser: syntax error: %s' % message)
+ValueError: paraparser: syntax error: parse ended with 1 unclosed tags
+ para
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Vikazim\roadbook_app\src\main.py", line 304, in exportPDF
+    filename = exporter.export()
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 159, in export
+    raise PDFExportError(f"Erreur lors de la création du PDF : {str(e)}")
+pdf_exporter.PDFExportError: Erreur lors de la création du PDF : paraparser: syntax error: parse ended with 1 unclosed tags
+ para
+
+=== Erreur export PDF ===
+Traceback (most recent call last):
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 117, in export
+    cell = self._build_vignette_cell(
+        v,
+    ...<4 lines>...
+        style_obs
+    )
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 239, in _build_vignette_cell
+    obs_para = Paragraph(obs_text, style_obs_dyn)
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paragraph.py", line 1809, in __init__
+    self._setup(text, style, bulletText or getattr(style,'bulletText',None), frags, cleanBlockQuotedText)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paragraph.py", line 1830, in _setup
+    style, frags, bulletTextFrags = _parser.parse(text,style)
+                                    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paraparser.py", line 3218, in parse
+    return self._complete_parse()
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paraparser.py", line 3152, in _complete_parse
+    self._syntax_error('parse ended with %d unclosed tags\n %s' % (len(self._stack),'\n '.join((x.__tag__ for x in reversed(self._stack)))))
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\glemi\AppData\Roaming\Python\Python313\site-packages\reportlab\platypus\paraparser.py", line 2779, in _syntax_error
+    raise ValueError('paraparser: syntax error: %s' % message)
+ValueError: paraparser: syntax error: parse ended with 1 unclosed tags
+ para
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Vikazim\roadbook_app\src\main.py", line 304, in exportPDF
+    filename = exporter.export()
+  File "E:\Vikazim\roadbook_app\src\pdf_exporter.py", line 159, in export
+    raise PDFExportError(f"Erreur lors de la création du PDF : {str(e)}")
+pdf_exporter.PDFExportError: Erreur lors de la création du PDF : paraparser: syntax error: parse ended with 1 unclosed tags
+ para

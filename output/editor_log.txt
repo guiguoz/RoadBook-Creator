@@ -1,0 +1,7 @@
+[2025-08-31 14:05:10] Export OK - items: paths=1, ellipses=0, texts=0, bounds=(24.1x372.5), svg_len=1816
+[2025-08-31 14:05:20] Export OK - items: paths=3, ellipses=0, texts=0, bounds=(478.7x481.0), svg_len=4504
+[2025-08-31 14:05:33] Export OK - items: paths=3, ellipses=0, texts=0, bounds=(172.5x358.5), svg_len=3446
+[2025-08-31 18:46:45] Export OK - items: paths=4, ellipses=0, texts=0, bounds=(232.1x390.5), svg_len=5130
+[2025-08-31 18:52:23] Export OK - items: paths=1, ellipses=0, texts=0, bounds=(24.1x399.5), svg_len=1816
+[2025-08-31 18:52:49] Export OK - items: paths=3, ellipses=0, texts=0, bounds=(403.0x512.0), svg_len=5159
+[2025-08-31 18:53:20] Export OK - items: paths=4, ellipses=0, texts=0, bounds=(443.7x314.7), svg_len=4460
