@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "release_date": "2024-12-01",
+  "download_url": "https://github.com/username/roadbook-app/releases/latest/download/roadbook_app.zip",
+  "changelog": [
+    "✅ Ré-édition complète des schémas",
+    "✅ Sauvegarde automatique toutes les 5 minutes", 
+    "✅ Installation automatique de Python",
+    "✅ Numérotation automatique des vignettes",
+    "🔧 Corrections diverses et améliorations"
+  ],
+  "required_python": "3.7+",
+  "size_mb": 2.5
+}
