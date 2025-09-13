@@ -8,26 +8,76 @@ set "SRC_PATH=%APP_PATH%src"
 echo Application path: %APP_PATH%
 echo Source path: %SRC_PATH%
 
-REM Trouver Python
-where python >nul 2>&1
+REM Trouver Python (eviter le faux Python de Windows Store)
+echo Recherche de Python...
+
+REM Tester python directement
+python --version >nul 2>&1
 if %errorlevel% equ 0 (
-    set "PYTHON=python"
-) else (
-    where py >nul 2>&1
+    REM Verifier que ce n'est pas le faux Python du Store
+    python -c "import sys; print(sys.executable)" >nul 2>&1
     if %errorlevel% equ 0 (
-        set "PYTHON=py -3"
-    ) else (
-        echo Python n'est pas installe. Installation automatique...
-        call :install_python
-        if errorlevel 1 (
-            echo Echec de l'installation automatique de Python
-            echo Veuillez installer Python manuellement depuis https://www.python.org/downloads/
-            pause
-            exit /b 1
-        )
         set "PYTHON=python"
+        echo Python trouve: python
+        goto :python_found
     )
 )
+
+REM Tester py launcher
+py -3 --version >nul 2>&1
+if %errorlevel% equ 0 (
+    set "PYTHON=py -3"
+    echo Python trouve: py -3
+    goto :python_found
+)
+
+REM Chercher Python dans les emplacements standards
+if exist "C:\Python*\python.exe" (
+    for /d %%i in ("C:\Python*") do (
+        if exist "%%i\python.exe" (
+            set "PYTHON=%%i\python.exe"
+            echo Python trouve: %%i\python.exe
+            goto :python_found
+        )
+    )
+)
+
+REM Chercher dans Program Files
+if exist "%ProgramFiles%\Python*\python.exe" (
+    for /d %%i in ("%ProgramFiles%\Python*") do (
+        if exist "%%i\python.exe" (
+            set "PYTHON=%%i\python.exe"
+            echo Python trouve: %%i\python.exe
+            goto :python_found
+        )
+    )
+)
+
+REM Chercher dans AppData
+if exist "%LOCALAPPDATA%\Programs\Python\Python*\python.exe" (
+    for /d %%i in ("%LOCALAPPDATA%\Programs\Python\Python*") do (
+        if exist "%%i\python.exe" (
+            set "PYTHON=%%i\python.exe"
+            echo Python trouve: %%i\python.exe
+            goto :python_found
+        )
+    )
+)
+
+REM Aucun Python trouve - Installation automatique
+echo Python n'est pas installe ou inaccessible.
+echo Installation automatique...
+call :install_python
+if errorlevel 1 (
+    echo Echec de l'installation automatique de Python
+    echo Veuillez installer Python manuellement depuis https://www.python.org/downloads/
+    echo IMPORTANT: Cochez "Add Python to PATH" lors de l'installation
+    pause
+    exit /b 1
+)
+set "PYTHON=python"
+
+:python_found
 
 echo Python trouve: %PYTHON%
 
@@ -122,17 +172,31 @@ if exist "%TEMP_DIR%" rmdir "%TEMP_DIR%"
 
 REM Actualiser les variables d'environnement
 echo Actualisation des variables d'environnement...
-for /f "skip=2 tokens=2*" %%A in ('reg query "HKCU\Environment" /v PATH') do set "USER_PATH=%%B"
-for /f "skip=2 tokens=2*" %%A in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH') do set "SYSTEM_PATH=%%B"
+REM Forcer le rechargement du PATH
+for /f "skip=2 tokens=2*" %%A in ('reg query "HKCU\Environment" /v PATH 2^>nul') do set "USER_PATH=%%B"
+for /f "skip=2 tokens=2*" %%A in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH 2^>nul') do set "SYSTEM_PATH=%%B"
 set "PATH=%SYSTEM_PATH%;%USER_PATH%"
+
+REM Ajouter les chemins Python standards au PATH temporairement
+set "PATH=%PATH%;%LOCALAPPDATA%\Programs\Python\Python311;%LOCALAPPDATA%\Programs\Python\Python311\Scripts"
+set "PATH=%PATH%;C:\Python311;C:\Python311\Scripts"
+set "PATH=%PATH%;%ProgramFiles%\Python311;%ProgramFiles%\Python311\Scripts"
 
 REM Verifier l'installation
 echo Verification de l'installation...
-where python >nul 2>&1
+python --version >nul 2>&1
 if errorlevel 1 (
     echo Python installe mais non trouve dans PATH
-    echo Redemarrage necessaire
-    exit /b 1
+    echo Tentative avec py launcher...
+    py -3 --version >nul 2>&1
+    if errorlevel 1 (
+        echo Installation echouee ou redemarrage necessaire
+        exit /b 1
+    ) else (
+        echo Python accessible via py launcher
+    )
+) else (
+    echo Python accessible directement
 )
 
 echo Python installe avec succes !
