@@ -69,26 +69,6 @@ class VignetteEditor(QDialog):
                 background-color: #f0f0f0;
                 font-family: Arial, sans-serif;
             }
-            QPushButton {
-                background-color: #ffffff;
-                color: #000000;
-                border: 2px solid #666666;
-                padding: 8px 16px;
-                border-radius: 4px;
-                font-size: 12px;
-                font-weight: bold;
-                min-width: 100px;
-                min-height: 32px;
-            }
-            QPushButton:hover {
-                background-color: #e8f4fd;
-                border: 1px solid #2196F3;
-            }
-            QPushButton:checked {
-                background-color: #2196F3;
-                color: white;
-                border: 1px solid #1976D2;
-            }
             QComboBox {
                 background-color: white;
                 border: 1px solid #cccccc;
@@ -144,26 +124,31 @@ class VignetteEditor(QDialog):
         self.undoButton = QPushButton('Annuler')
         self.undoButton.clicked.connect(self.undo)
         self.undoButton.setEnabled(False)
+        self._styleToolbarButton(self.undoButton)
         actions_layout.addWidget(self.undoButton)
         
         self.redoButton = QPushButton('Rétablir')
         self.redoButton.clicked.connect(self.redo)
         self.redoButton.setEnabled(False)
+        self._styleToolbarButton(self.redoButton)
         actions_layout.addWidget(self.redoButton)
         
         self.mainButton = QPushButton('Déplacer')
         self.mainButton.setCheckable(True)
         self.mainButton.clicked.connect(self.toggleSelectionMode)
+        self._styleToolbarButton(self.mainButton)
         actions_layout.addWidget(self.mainButton)
         
         self.eraserButton = QPushButton('Effacer')
         self.eraserButton.setCheckable(True)
         self.eraserButton.clicked.connect(self.toggleEraserMode)
+        self._styleToolbarButton(self.eraserButton)
         actions_layout.addWidget(self.eraserButton)
         
         self.baliseButton = QPushButton('Balise')
         self.baliseButton.setCheckable(True)
         self.baliseButton.clicked.connect(self.toggleBaliseMode)
+        self._styleToolbarButton(self.baliseButton)
         actions_layout.addWidget(self.baliseButton)
         
         actions_layout.addStretch()
@@ -181,18 +166,21 @@ class VignetteEditor(QDialog):
         self.freeDrawButton.setCheckable(True)
         self.freeDrawButton.setChecked(True)
         self.freeDrawButton.clicked.connect(self.toggleDrawingMode)
+        self._styleToolbarButton(self.freeDrawButton)
         self.orientationGroup.addButton(self.freeDrawButton)
         drawing_layout.addWidget(self.freeDrawButton)
         
         self.horizontalButton = QPushButton('Horizontal')
         self.horizontalButton.setCheckable(True)
         self.horizontalButton.clicked.connect(self.toggleDrawingMode)
+        self._styleToolbarButton(self.horizontalButton)
         self.orientationGroup.addButton(self.horizontalButton)
         drawing_layout.addWidget(self.horizontalButton)
         
         self.verticalButton = QPushButton('Vertical')
         self.verticalButton.setCheckable(True)
         self.verticalButton.clicked.connect(self.toggleDrawingMode)
+        self._styleToolbarButton(self.verticalButton)
         self.orientationGroup.addButton(self.verticalButton)
         drawing_layout.addWidget(self.verticalButton)
         
@@ -210,6 +198,7 @@ class VignetteEditor(QDialog):
         self.textButton = QPushButton('Texte')
         self.textButton.setCheckable(True)
         self.textButton.clicked.connect(self.toggleTextMode)
+        self._styleToolbarButton(self.textButton)
         drawing_layout.addWidget(self.textButton)
         
         self.textSizeCombo = QComboBox()
@@ -220,12 +209,44 @@ class VignetteEditor(QDialog):
         
         self.textColorButton = QPushButton('Couleur')
         self.textColorButton.clicked.connect(self.changeTextColor)
+        self._styleToolbarButton(self.textColorButton)
         drawing_layout.addWidget(self.textColorButton)
         
         drawing_layout.addStretch()
         layout.addWidget(drawing_group)
         
         return toolbar
+    
+    def _styleToolbarButton(self, button):
+        """Apply consistent styling to toolbar buttons"""
+        button.setStyleSheet("""
+            QPushButton {
+                background-color: #ffffff;
+                color: #000000;
+                border: 1px solid #cccccc;
+                padding: 6px 10px;
+                border-radius: 3px;
+                font-size: 11px;
+                font-weight: normal;
+                min-width: 70px;
+                max-width: 90px;
+                min-height: 26px;
+            }
+            QPushButton:hover {
+                background-color: #e8f4fd;
+                border: 1px solid #2196F3;
+            }
+            QPushButton:checked {
+                background-color: #2196F3;
+                color: white;
+                border: 1px solid #1976D2;
+            }
+            QPushButton:disabled {
+                background-color: #f5f5f5;
+                color: #999999;
+                border: 1px solid #dddddd;
+            }
+        """)
     
     def _createGraphicsView(self):
         self.scene = QGraphicsScene(self)
