@@ -64,31 +64,8 @@ class VignetteEditor(QDialog):
         self.setWindowTitle('Éditeur de Schéma')
         self.setFixedSize(self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
         self.setGeometry(200, 200, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
-        self.setStyleSheet("""
-            QDialog {
-                background-color: #f0f0f0;
-                font-family: Arial, sans-serif;
-            }
-            QComboBox {
-                background-color: white;
-                border: 1px solid #cccccc;
-                padding: 8px 12px;
-                border-radius: 6px;
-                font-size: 13px;
-                min-height: 25px;
-            }
-            QLabel {
-                font-size: 13px;
-                color: #333333;
-                font-weight: bold;
-                padding: 5px;
-            }
-            QGraphicsView {
-                border: 2px solid #cccccc;
-                border-radius: 8px;
-                background-color: white;
-            }
-        """)
+        # Utiliser les styles par défaut de Qt pour une meilleure compatibilité
+        pass
         
         layout = QVBoxLayout(self)
         layout.setSpacing(20)
@@ -106,84 +83,69 @@ class VignetteEditor(QDialog):
         self.toggleDrawingMode()
     
     def _createSimpleToolbar(self):
-        from PyQt5.QtWidgets import QWidget, QGroupBox
+        from PyQt5.QtWidgets import QWidget
         
         toolbar = QWidget()
-        toolbar.setFixedHeight(120)
+        toolbar.setFixedHeight(80)
         
-        layout = QVBoxLayout(toolbar)
-        layout.setSpacing(10)
-        layout.setContentsMargins(5, 5, 5, 5)
+        # Layout principal horizontal
+        main_layout = QHBoxLayout(toolbar)
+        main_layout.setSpacing(15)
+        main_layout.setContentsMargins(10, 10, 10, 10)
         
-        # Groupe Actions
-        actions_group = QGroupBox('ACTIONS')
-        actions_group.setStyleSheet('QGroupBox { font-weight: bold; color: #2196F3; }')
-        actions_layout = QHBoxLayout(actions_group)
-        actions_layout.setSpacing(5)
-        
+        # Boutons d'action
         self.undoButton = QPushButton('Annuler')
         self.undoButton.clicked.connect(self.undo)
         self.undoButton.setEnabled(False)
-        self._styleToolbarButton(self.undoButton)
-        actions_layout.addWidget(self.undoButton)
+        main_layout.addWidget(self.undoButton)
         
         self.redoButton = QPushButton('Rétablir')
         self.redoButton.clicked.connect(self.redo)
         self.redoButton.setEnabled(False)
-        self._styleToolbarButton(self.redoButton)
-        actions_layout.addWidget(self.redoButton)
+        main_layout.addWidget(self.redoButton)
+        
+        # Séparateur
+        main_layout.addWidget(self._createSeparator())
         
         self.mainButton = QPushButton('Déplacer')
         self.mainButton.setCheckable(True)
         self.mainButton.clicked.connect(self.toggleSelectionMode)
-        self._styleToolbarButton(self.mainButton)
-        actions_layout.addWidget(self.mainButton)
+        main_layout.addWidget(self.mainButton)
         
         self.eraserButton = QPushButton('Effacer')
         self.eraserButton.setCheckable(True)
         self.eraserButton.clicked.connect(self.toggleEraserMode)
-        self._styleToolbarButton(self.eraserButton)
-        actions_layout.addWidget(self.eraserButton)
+        main_layout.addWidget(self.eraserButton)
         
-        self.baliseButton = QPushButton('Balise')
-        self.baliseButton.setCheckable(True)
-        self.baliseButton.clicked.connect(self.toggleBaliseMode)
-        self._styleToolbarButton(self.baliseButton)
-        actions_layout.addWidget(self.baliseButton)
+        # Séparateur
+        main_layout.addWidget(self._createSeparator())
         
-        actions_layout.addStretch()
-        layout.addWidget(actions_group)
-        
-        # Groupe Dessin
-        drawing_group = QGroupBox('DESSIN')
-        drawing_group.setStyleSheet('QGroupBox { font-weight: bold; color: #2196F3; }')
-        drawing_layout = QHBoxLayout(drawing_group)
-        drawing_layout.setSpacing(5)
-        
+        # Boutons de dessin
         self.orientationGroup = QButtonGroup(self)
         
         self.freeDrawButton = QPushButton('Libre')
         self.freeDrawButton.setCheckable(True)
         self.freeDrawButton.setChecked(True)
         self.freeDrawButton.clicked.connect(self.toggleDrawingMode)
-        self._styleToolbarButton(self.freeDrawButton)
         self.orientationGroup.addButton(self.freeDrawButton)
-        drawing_layout.addWidget(self.freeDrawButton)
+        main_layout.addWidget(self.freeDrawButton)
         
         self.horizontalButton = QPushButton('Horizontal')
         self.horizontalButton.setCheckable(True)
         self.horizontalButton.clicked.connect(self.toggleDrawingMode)
-        self._styleToolbarButton(self.horizontalButton)
         self.orientationGroup.addButton(self.horizontalButton)
-        drawing_layout.addWidget(self.horizontalButton)
+        main_layout.addWidget(self.horizontalButton)
         
         self.verticalButton = QPushButton('Vertical')
         self.verticalButton.setCheckable(True)
         self.verticalButton.clicked.connect(self.toggleDrawingMode)
-        self._styleToolbarButton(self.verticalButton)
         self.orientationGroup.addButton(self.verticalButton)
-        drawing_layout.addWidget(self.verticalButton)
+        main_layout.addWidget(self.verticalButton)
         
+        # Séparateur
+        main_layout.addWidget(self._createSeparator())
+        
+        # ComboBox type de ligne
         self.lineTypeCombo = QComboBox()
         self.lineTypeCombo.addItems([
             'Flèche épaisse', 'Flèche moyenne', 'Flèche fine',
@@ -192,37 +154,46 @@ class VignetteEditor(QDialog):
             'Pointillés épais', 'Pointillés moyens', 'Pointillés fins',
             'Route goudronnée', 'Route goudronnée avec flèche'
         ])
-        self.lineTypeCombo.setMinimumWidth(140)
-        drawing_layout.addWidget(self.lineTypeCombo)
+        self.lineTypeCombo.setMinimumWidth(150)
+        main_layout.addWidget(self.lineTypeCombo)
         
+        # Séparateur
+        main_layout.addWidget(self._createSeparator())
+        
+        # Boutons texte
         self.textButton = QPushButton('Texte')
         self.textButton.setCheckable(True)
         self.textButton.clicked.connect(self.toggleTextMode)
-        self._styleToolbarButton(self.textButton)
-        drawing_layout.addWidget(self.textButton)
+        main_layout.addWidget(self.textButton)
         
+        self.baliseButton = QPushButton('Balise')
+        self.baliseButton.setCheckable(True)
+        self.baliseButton.clicked.connect(self.toggleBaliseMode)
+        main_layout.addWidget(self.baliseButton)
+        
+        # Taille texte
         self.textSizeCombo = QComboBox()
         self.textSizeCombo.addItems(['8', '10', '12', '14', '16', '18', '20', '24'])
         self.textSizeCombo.setCurrentText('12')
         self.textSizeCombo.currentTextChanged.connect(self.changeTextSize)
-        drawing_layout.addWidget(self.textSizeCombo)
+        self.textSizeCombo.setMaximumWidth(60)
+        main_layout.addWidget(self.textSizeCombo)
         
         self.textColorButton = QPushButton('Couleur')
         self.textColorButton.clicked.connect(self.changeTextColor)
-        self._styleToolbarButton(self.textColorButton)
-        drawing_layout.addWidget(self.textColorButton)
+        main_layout.addWidget(self.textColorButton)
         
-        drawing_layout.addStretch()
-        layout.addWidget(drawing_group)
+        main_layout.addStretch()
         
         return toolbar
     
-    def _styleToolbarButton(self, button):
-        """Apply minimal styling to toolbar buttons"""
-        # Utiliser les styles par défaut de Qt avec juste les ajustements nécessaires
-        button.setMinimumWidth(60)
-        button.setMaximumWidth(80)
-        button.setMinimumHeight(24)
+    def _createSeparator(self):
+        from PyQt5.QtWidgets import QFrame
+        separator = QFrame()
+        separator.setFrameShape(QFrame.VLine)
+        separator.setFrameShadow(QFrame.Sunken)
+        separator.setMaximumWidth(2)
+        return separator
     
     def _createGraphicsView(self):
         self.scene = QGraphicsScene(self)
