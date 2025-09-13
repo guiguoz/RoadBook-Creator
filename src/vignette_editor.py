@@ -109,17 +109,17 @@ class VignetteEditor(QDialog):
         from PyQt5.QtWidgets import QWidget, QGroupBox
         
         toolbar = QWidget()
-        toolbar.setFixedHeight(140)
+        toolbar.setFixedHeight(120)
         
         layout = QVBoxLayout(toolbar)
-        layout.setSpacing(15)
-        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setSpacing(10)
+        layout.setContentsMargins(5, 5, 5, 5)
         
         # Groupe Actions
         actions_group = QGroupBox('ACTIONS')
         actions_group.setStyleSheet('QGroupBox { font-weight: bold; color: #2196F3; }')
         actions_layout = QHBoxLayout(actions_group)
-        actions_layout.setSpacing(8)
+        actions_layout.setSpacing(5)
         
         self.undoButton = QPushButton('Annuler')
         self.undoButton.clicked.connect(self.undo)
@@ -158,7 +158,7 @@ class VignetteEditor(QDialog):
         drawing_group = QGroupBox('DESSIN')
         drawing_group.setStyleSheet('QGroupBox { font-weight: bold; color: #2196F3; }')
         drawing_layout = QHBoxLayout(drawing_group)
-        drawing_layout.setSpacing(8)
+        drawing_layout.setSpacing(5)
         
         self.orientationGroup = QButtonGroup(self)
         
@@ -192,7 +192,7 @@ class VignetteEditor(QDialog):
             'Pointillés épais', 'Pointillés moyens', 'Pointillés fins',
             'Route goudronnée', 'Route goudronnée avec flèche'
         ])
-        self.lineTypeCombo.setMinimumWidth(160)
+        self.lineTypeCombo.setMinimumWidth(140)
         drawing_layout.addWidget(self.lineTypeCombo)
         
         self.textButton = QPushButton('Texte')
@@ -218,35 +218,11 @@ class VignetteEditor(QDialog):
         return toolbar
     
     def _styleToolbarButton(self, button):
-        """Apply consistent styling to toolbar buttons"""
-        button.setStyleSheet("""
-            QPushButton {
-                background-color: #ffffff;
-                color: #000000;
-                border: 1px solid #cccccc;
-                padding: 6px 10px;
-                border-radius: 3px;
-                font-size: 11px;
-                font-weight: normal;
-                min-width: 70px;
-                max-width: 90px;
-                min-height: 26px;
-            }
-            QPushButton:hover {
-                background-color: #e8f4fd;
-                border: 1px solid #2196F3;
-            }
-            QPushButton:checked {
-                background-color: #2196F3;
-                color: white;
-                border: 1px solid #1976D2;
-            }
-            QPushButton:disabled {
-                background-color: #f5f5f5;
-                color: #999999;
-                border: 1px solid #dddddd;
-            }
-        """)
+        """Apply minimal styling to toolbar buttons"""
+        # Utiliser les styles par défaut de Qt avec juste les ajustements nécessaires
+        button.setMinimumWidth(60)
+        button.setMaximumWidth(80)
+        button.setMinimumHeight(24)
     
     def _createGraphicsView(self):
         self.scene = QGraphicsScene(self)
