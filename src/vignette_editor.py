@@ -73,12 +73,12 @@ class VignetteEditor(QDialog):
                 background-color: #ffffff;
                 color: #000000;
                 border: 2px solid #666666;
-                padding: 6px 12px;
+                padding: 8px 16px;
                 border-radius: 4px;
                 font-size: 12px;
                 font-weight: bold;
-                min-width: 80px;
-                min-height: 28px;
+                min-width: 100px;
+                min-height: 32px;
             }
             QPushButton:hover {
                 background-color: #e8f4fd;
@@ -139,7 +139,7 @@ class VignetteEditor(QDialog):
         actions_group = QGroupBox('ACTIONS')
         actions_group.setStyleSheet('QGroupBox { font-weight: bold; color: #2196F3; }')
         actions_layout = QHBoxLayout(actions_group)
-        actions_layout.setSpacing(10)
+        actions_layout.setSpacing(8)
         
         self.undoButton = QPushButton('Annuler')
         self.undoButton.clicked.connect(self.undo)
@@ -173,7 +173,7 @@ class VignetteEditor(QDialog):
         drawing_group = QGroupBox('DESSIN')
         drawing_group.setStyleSheet('QGroupBox { font-weight: bold; color: #2196F3; }')
         drawing_layout = QHBoxLayout(drawing_group)
-        drawing_layout.setSpacing(10)
+        drawing_layout.setSpacing(8)
         
         self.orientationGroup = QButtonGroup(self)
         
@@ -204,7 +204,7 @@ class VignetteEditor(QDialog):
             'Pointillés épais', 'Pointillés moyens', 'Pointillés fins',
             'Route goudronnée', 'Route goudronnée avec flèche'
         ])
-        self.lineTypeCombo.setMinimumWidth(130)
+        self.lineTypeCombo.setMinimumWidth(160)
         drawing_layout.addWidget(self.lineTypeCombo)
         
         self.textButton = QPushButton('Texte')
