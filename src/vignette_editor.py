@@ -86,41 +86,44 @@ class VignetteEditor(QDialog):
         from PyQt5.QtWidgets import QWidget
         
         toolbar = QWidget()
-        toolbar.setFixedHeight(80)
+        toolbar.setFixedHeight(120)
         
-        # Layout principal horizontal
-        main_layout = QHBoxLayout(toolbar)
-        main_layout.setSpacing(15)
-        main_layout.setContentsMargins(10, 10, 10, 10)
+        # Layout principal vertical
+        main_layout = QVBoxLayout(toolbar)
+        main_layout.setSpacing(5)
+        main_layout.setContentsMargins(10, 5, 10, 5)
         
-        # Boutons d'action
+        # LIGNE 1: Fonctions d'édition
+        edit_layout = QHBoxLayout()
+        edit_layout.setSpacing(10)
+        
         self.undoButton = QPushButton('Annuler')
         self.undoButton.clicked.connect(self.undo)
         self.undoButton.setEnabled(False)
-        main_layout.addWidget(self.undoButton)
+        edit_layout.addWidget(self.undoButton)
         
         self.redoButton = QPushButton('Rétablir')
         self.redoButton.clicked.connect(self.redo)
         self.redoButton.setEnabled(False)
-        main_layout.addWidget(self.redoButton)
-        
-        # Séparateur
-        main_layout.addWidget(self._createSeparator())
+        edit_layout.addWidget(self.redoButton)
         
         self.mainButton = QPushButton('Déplacer')
         self.mainButton.setCheckable(True)
         self.mainButton.clicked.connect(self.toggleSelectionMode)
-        main_layout.addWidget(self.mainButton)
+        edit_layout.addWidget(self.mainButton)
         
         self.eraserButton = QPushButton('Effacer')
         self.eraserButton.setCheckable(True)
         self.eraserButton.clicked.connect(self.toggleEraserMode)
-        main_layout.addWidget(self.eraserButton)
+        edit_layout.addWidget(self.eraserButton)
         
-        # Séparateur
-        main_layout.addWidget(self._createSeparator())
+        edit_layout.addStretch()
+        main_layout.addLayout(edit_layout)
         
-        # Boutons de dessin
+        # LIGNE 2: Fonctions de dessin
+        draw_layout = QHBoxLayout()
+        draw_layout.setSpacing(10)
+        
         self.orientationGroup = QButtonGroup(self)
         
         self.freeDrawButton = QPushButton('Libre')
@@ -128,22 +131,19 @@ class VignetteEditor(QDialog):
         self.freeDrawButton.setChecked(True)
         self.freeDrawButton.clicked.connect(self.toggleDrawingMode)
         self.orientationGroup.addButton(self.freeDrawButton)
-        main_layout.addWidget(self.freeDrawButton)
+        draw_layout.addWidget(self.freeDrawButton)
         
         self.horizontalButton = QPushButton('Horizontal')
         self.horizontalButton.setCheckable(True)
         self.horizontalButton.clicked.connect(self.toggleDrawingMode)
         self.orientationGroup.addButton(self.horizontalButton)
-        main_layout.addWidget(self.horizontalButton)
+        draw_layout.addWidget(self.horizontalButton)
         
         self.verticalButton = QPushButton('Vertical')
         self.verticalButton.setCheckable(True)
         self.verticalButton.clicked.connect(self.toggleDrawingMode)
         self.orientationGroup.addButton(self.verticalButton)
-        main_layout.addWidget(self.verticalButton)
-        
-        # Séparateur
-        main_layout.addWidget(self._createSeparator())
+        draw_layout.addWidget(self.verticalButton)
         
         # ComboBox type de ligne
         self.lineTypeCombo = QComboBox()
@@ -154,22 +154,25 @@ class VignetteEditor(QDialog):
             'Pointillés épais', 'Pointillés moyens', 'Pointillés fins',
             'Route goudronnée', 'Route goudronnée avec flèche'
         ])
-        self.lineTypeCombo.setMinimumWidth(150)
-        main_layout.addWidget(self.lineTypeCombo)
+        self.lineTypeCombo.setMinimumWidth(180)
+        draw_layout.addWidget(self.lineTypeCombo)
         
-        # Séparateur
-        main_layout.addWidget(self._createSeparator())
+        draw_layout.addStretch()
+        main_layout.addLayout(draw_layout)
         
-        # Boutons texte
-        self.textButton = QPushButton('Texte')
-        self.textButton.setCheckable(True)
-        self.textButton.clicked.connect(self.toggleTextMode)
-        main_layout.addWidget(self.textButton)
+        # LIGNE 3: Fonctions texte
+        text_layout = QHBoxLayout()
+        text_layout.setSpacing(10)
         
         self.baliseButton = QPushButton('Balise')
         self.baliseButton.setCheckable(True)
         self.baliseButton.clicked.connect(self.toggleBaliseMode)
-        main_layout.addWidget(self.baliseButton)
+        text_layout.addWidget(self.baliseButton)
+        
+        self.textButton = QPushButton('Texte')
+        self.textButton.setCheckable(True)
+        self.textButton.clicked.connect(self.toggleTextMode)
+        text_layout.addWidget(self.textButton)
         
         # Taille texte
         self.textSizeCombo = QComboBox()
@@ -177,23 +180,18 @@ class VignetteEditor(QDialog):
         self.textSizeCombo.setCurrentText('12')
         self.textSizeCombo.currentTextChanged.connect(self.changeTextSize)
         self.textSizeCombo.setMaximumWidth(60)
-        main_layout.addWidget(self.textSizeCombo)
+        text_layout.addWidget(self.textSizeCombo)
         
         self.textColorButton = QPushButton('Couleur')
         self.textColorButton.clicked.connect(self.changeTextColor)
-        main_layout.addWidget(self.textColorButton)
+        text_layout.addWidget(self.textColorButton)
         
-        main_layout.addStretch()
+        text_layout.addStretch()
+        main_layout.addLayout(text_layout)
         
         return toolbar
     
-    def _createSeparator(self):
-        from PyQt5.QtWidgets import QFrame
-        separator = QFrame()
-        separator.setFrameShape(QFrame.VLine)
-        separator.setFrameShadow(QFrame.Sunken)
-        separator.setMaximumWidth(2)
-        return separator
+
     
     def _createGraphicsView(self):
         self.scene = QGraphicsScene(self)
