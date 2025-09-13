@@ -176,7 +176,7 @@ class VignetteEditor(QDialog):
         
         # Taille texte
         self.textSizeCombo = QComboBox()
-        self.textSizeCombo.addItems(['8', '10', '12', '14', '16', '18', '20', '24'])
+        self.textSizeCombo.addItems(['8', '10', '12', '14', '16', '18', '20', '24', '28', '32', '36', '48', '60', '72'])
         self.textSizeCombo.setCurrentText('12')
         self.textSizeCombo.currentTextChanged.connect(self.changeTextSize)
         self.textSizeCombo.setMaximumWidth(60)
@@ -185,6 +185,12 @@ class VignetteEditor(QDialog):
         self.textColorButton = QPushButton('Couleur')
         self.textColorButton.clicked.connect(self.changeTextColor)
         text_layout.addWidget(self.textColorButton)
+        
+        # Aperçu de la couleur sélectionnée
+        self.colorPreview = QLabel()
+        self.colorPreview.setFixedSize(30, 25)
+        self.colorPreview.setStyleSheet(f"background-color: {self.text_color.name()}; border: 1px solid #000000;")
+        text_layout.addWidget(self.colorPreview)
         
         text_layout.addStretch()
         main_layout.addLayout(text_layout)
@@ -307,6 +313,8 @@ class VignetteEditor(QDialog):
         color = QColorDialog.getColor(self.text_color, self, "Choisir la couleur du texte")
         if color.isValid():
             self.text_color = color
+            # Mettre à jour l'aperçu de couleur
+            self.colorPreview.setStyleSheet(f"background-color: {self.text_color.name()}; border: 1px solid #000000;")
             
     def changeTextSize(self, size_str):
         new_size = int(size_str)
