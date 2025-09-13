@@ -154,6 +154,8 @@ if errorlevel 1 (
 )
 
 echo Telechargement termine. Installation en cours...
+echo ATTENTION: L'installation peut prendre quelques minutes.
+echo Une fenetre d'autorisation Windows pourrait apparaitre - veuillez l'accepter.
 echo.
 
 REM Installer Python silencieusement avec PATH
