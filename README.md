@@ -11,7 +11,7 @@
 
 **Aucune configuration requise !** L'application installe automatiquement tout ce dont elle a besoin.
 
-1. **📥 Télécharger** l' [archive](https://github.com/guiguoz/RoadBook-Creator/archive/refs/heads/main.zip)
+1. **📥 Télécharger** le [dernier release](https://github.com/username/roadbook-pro/releases/latest)
 2. **📂 Extraire** le dossier ZIP
 3. **🖱️ Double-cliquer** sur `launch.bat`
 4. **✨ L'application se lance** automatiquement !
@@ -114,7 +114,7 @@ Les logs sont stockés dans `logs/roadbook_YYYYMMDD.log` pour le diagnostic en c
 **Projet mené par** : Guillaume Lemiègre  
 **Développé par** : Intelligence Artificielle  
 **Technologies** : Python 3.7+, PyQt5, ReportLab, SVG  
-**Version** : 1.0.0 (Décembre 2024)
+**Version** : 1.0.0 (Septembre 2025)
 
 ---
 
