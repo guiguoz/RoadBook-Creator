@@ -78,26 +78,18 @@ class PDFExporter:
 
             n = len(self.vignettes)
 
-            # Déterminer le nombre de colonnes (1 ou 2) et la hauteur des lignes
-            # Hauteur minimale raisonnable par vignette (pour lisibilité)
-            min_row_h = 2.8 * cm
-
+            # Logique optimisée pour favoriser 2 colonnes quand c'est plus lisible
             if n <= 1:
                 columns = 1
                 rows_per_col = max(1, n)
+            elif n <= 4:
+                # 2-4 vignettes: 1 colonne pour plus de place
+                columns = 1
+                rows_per_col = n
             else:
-                # Essai en 1 colonne - Add validation to prevent division by zero
-                if n > 0:
-                    row_h_one_col = content_height / n
-                    if row_h_one_col >= min_row_h:
-                        columns = 1
-                        rows_per_col = n
-                    else:
-                        columns = 2
-                        rows_per_col = math.ceil(n / 2)
-                else:
-                    columns = 1
-                    rows_per_col = 1
+                # 5+ vignettes: 2 colonnes pour optimiser l'espace
+                columns = 2
+                rows_per_col = math.ceil(n / 2)
 
             row_h = content_height / max(1, rows_per_col)
             col_w = content_width / columns

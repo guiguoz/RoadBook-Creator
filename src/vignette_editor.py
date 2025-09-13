@@ -15,7 +15,7 @@ import logging
 class VignetteEditor(QDialog):
     # Constants
     WINDOW_WIDTH = 800
-    WINDOW_HEIGHT = 600
+    WINDOW_HEIGHT = 650
     SCENE_WIDTH = 750
     SCENE_HEIGHT = 400
     BALISE_RADIUS = 25
@@ -72,6 +72,7 @@ class VignetteEditor(QDialog):
         layout.setContentsMargins(20, 20, 20, 20)
         
         layout.addWidget(self._createSimpleToolbar())
+        layout.addWidget(self._createInfoMessage())
         layout.addWidget(self._createGraphicsView())
         layout.addLayout(self._createButtonLayout())
         
@@ -197,7 +198,21 @@ class VignetteEditor(QDialog):
         
         return toolbar
     
-
+    def _createInfoMessage(self):
+        info_label = QLabel("💡 Pour un rendu optimal, assurez-vous que le schéma occupe entièrement l'éditeur, ou au minimum la plus grande partie de la fenêtre")
+        info_label.setStyleSheet("""
+            QLabel {
+                background-color: #e8f4fd;
+                color: #1976d2;
+                padding: 8px;
+                border: 1px solid #2196f3;
+                border-radius: 4px;
+                font-size: 11px;
+                font-style: italic;
+            }
+        """)
+        info_label.setWordWrap(True)
+        return info_label
     
     def _createGraphicsView(self):
         self.scene = QGraphicsScene(self)

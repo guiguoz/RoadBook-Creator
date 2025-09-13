@@ -121,23 +121,18 @@ class JPEGExporter:
         content_height = height - 2 * margin
         
         n = len(self.vignettes)
-        min_row_h = int(content_height * 0.15)
-        
+        # Logique optimisée pour favoriser 2 colonnes quand c'est plus lisible
         if n <= 1:
             columns = 1
             rows_per_col = max(1, n)
+        elif n <= 4:
+            # 2-4 vignettes: 1 colonne pour plus de place
+            columns = 1
+            rows_per_col = n
         else:
-            if n > 0:
-                row_h_one_col = content_height / n
-                if row_h_one_col >= min_row_h:
-                    columns = 1
-                    rows_per_col = n
-                else:
-                    columns = 2
-                    rows_per_col = math.ceil(n / 2)
-            else:
-                columns = 1
-                rows_per_col = 1
+            # 5+ vignettes: 2 colonnes pour optimiser l'espace
+            columns = 2
+            rows_per_col = math.ceil(n / 2)
         
         row_h = content_height / max(1, rows_per_col)
         col_w = content_width / columns
@@ -225,9 +220,20 @@ class JPEGExporter:
         painter.setPen(QPen(Qt.black, 2))
         painter.drawRect(num_rect)
         
-        # Tailles de police responsive comme le PDF
-        num_fs = max(12, int(rect.height() * 0.26 / 100 * 10))
-        lab_fs = max(8, int(rect.height() * 0.18 / 100 * 10))
+        # Tailles de police responsive adaptées au nombre de vignettes
+        n = len(self.vignettes)
+        if n <= 3:
+            num_fs = max(16, min(24, int(rect.height() * 0.35)))
+            lab_fs = max(10, min(14, int(rect.height() * 0.20)))
+        elif n <= 6:
+            num_fs = max(14, min(20, int(rect.height() * 0.30)))
+            lab_fs = max(9, min(12, int(rect.height() * 0.18)))
+        elif n <= 10:
+            num_fs = max(12, min(16, int(rect.height() * 0.25)))
+            lab_fs = max(8, min(10, int(rect.height() * 0.15)))
+        else:
+            num_fs = max(10, min(14, int(rect.height() * 0.20)))
+            lab_fs = max(7, min(9, int(rect.height() * 0.12)))
         
         font = QFont("Arial", num_fs, QFont.Bold)
         painter.setFont(font)
@@ -257,8 +263,16 @@ class JPEGExporter:
         
         obs_hdr_h = min(40, int(rect.height() * 0.15))
         
-        # Taille de police responsive
-        obs_fs = max(8, int(rect.height() * 0.18 / 100 * 10))
+        # Taille de police responsive adaptée au nombre de vignettes
+        n = len(self.vignettes)
+        if n <= 3:
+            obs_fs = max(10, min(14, int(rect.height() * 0.18)))
+        elif n <= 6:
+            obs_fs = max(9, min(12, int(rect.height() * 0.16)))
+        elif n <= 10:
+            obs_fs = max(8, min(10, int(rect.height() * 0.14)))
+        else:
+            obs_fs = max(7, min(9, int(rect.height() * 0.12)))
         
         # Titre
         title_rect = QRect(rect.x(), rect.y(), rect.width(), obs_hdr_h)
@@ -276,7 +290,7 @@ class JPEGExporter:
             if len(obs_text) > 200:
                 obs_text = obs_text[:197] + "..."
             
-            font = QFont("Arial", max(6, obs_fs - 2))
+            font = QFont("Arial", max(6, obs_fs - 1))
             painter.setFont(font)
             painter.drawText(content_rect.adjusted(6, 3, -6, -3), 
                            Qt.AlignTop | Qt.TextWordWrap, obs_text)
