@@ -1,0 +1,316 @@
+{
+  "vignettes": [
+    {
+      "num": 1,
+      "inter_dist": 0.0,
+      "observations": "",
+      "diagram": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"264.583mm\" height=\"141.111mm\"\n viewBox=\"0 0 750 400\"\n xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"  version=\"1.2\" baseProfile=\"tiny\">\n<title>Qt SVG Document</title>\n<desc>Generated with Qt</desc>\n<defs>\n</defs>\n<g fill=\"none\" stroke=\"black\" stroke-width=\"1\" fill-rule=\"evenodd\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" >\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"7\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M281,382 L312,18 L320.494,36.1066 M312,18 L300.566,34.4095\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"3\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M77,188 L680,188 M77,176 L680,176 M680,194 L700,182 L680,170 L680,194\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n</g>\n</svg>\n",
+      "drawing_elements": [
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 77.0,
+              "y": 188.0
+            },
+            {
+              "type": 1,
+              "x": 680.0,
+              "y": 188.0
+            },
+            {
+              "type": 0,
+              "x": 77.0,
+              "y": 176.0
+            },
+            {
+              "type": 1,
+              "x": 680.0,
+              "y": 176.0
+            },
+            {
+              "type": 0,
+              "x": 680.0,
+              "y": 194.0
+            },
+            {
+              "type": 1,
+              "x": 700.0,
+              "y": 182.0
+            },
+            {
+              "type": 1,
+              "x": 680.0,
+              "y": 170.0
+            },
+            {
+              "type": 1,
+              "x": 680.0,
+              "y": 194.0
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 3,
+          "pen_style": 1,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 281.0,
+              "y": 382.0
+            },
+            {
+              "type": 1,
+              "x": 312.0,
+              "y": 18.0
+            },
+            {
+              "type": 1,
+              "x": 320.4941531840468,
+              "y": 36.10661099394216
+            },
+            {
+              "type": 0,
+              "x": 312.0,
+              "y": 18.0
+            },
+            {
+              "type": 1,
+              "x": 300.5662914948269,
+              "y": 34.409457937992116
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 7,
+          "pen_style": 1,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "inter_dist": 0.0,
+      "observations": "",
+      "diagram": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"264.583mm\" height=\"141.111mm\"\n viewBox=\"0 0 750 400\"\n xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"  version=\"1.2\" baseProfile=\"tiny\">\n<title>Qt SVG Document</title>\n<desc>Generated with Qt</desc>\n<defs>\n</defs>\n<g fill=\"none\" stroke=\"black\" stroke-width=\"1\" fill-rule=\"evenodd\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" >\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"7\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M207,298 L296,104 L297.867,123.913 M296,104 L279.689,115.573\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-dasharray=\"20,10\" stroke-dashoffset=\"0\" stroke-width=\"5\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M80,218 L535,186\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-dasharray=\"20,10\" stroke-dashoffset=\"0\" stroke-width=\"5\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M504,49 L215,260\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-dasharray=\"20,10\" stroke-dashoffset=\"0\" stroke-width=\"5\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M85,92 L244,279\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n</g>\n</svg>\n",
+      "drawing_elements": [
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 85.0,
+              "y": 92.0
+            },
+            {
+              "type": 1,
+              "x": 244.0,
+              "y": 279.0
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 5,
+          "pen_style": 2,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 504.0,
+              "y": 49.0
+            },
+            {
+              "type": 1,
+              "x": 215.0,
+              "y": 260.0
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 5,
+          "pen_style": 2,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 80.0,
+              "y": 218.0
+            },
+            {
+              "type": 1,
+              "x": 535.0,
+              "y": 186.0
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 5,
+          "pen_style": 2,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 207.0,
+              "y": 298.0
+            },
+            {
+              "type": 1,
+              "x": 296.0,
+              "y": 104.0
+            },
+            {
+              "type": 1,
+              "x": 297.86690957111847,
+              "y": 123.91267557746237
+            },
+            {
+              "type": 0,
+              "x": 296.0,
+              "y": 104.0
+            },
+            {
+              "type": 1,
+              "x": 279.6885718781589,
+              "y": 115.5731289038881
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 7,
+          "pen_style": 1,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "inter_dist": 0.0,
+      "observations": "",
+      "diagram": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"264.583mm\" height=\"141.111mm\"\n viewBox=\"0 0 750 400\"\n xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"  version=\"1.2\" baseProfile=\"tiny\">\n<title>Qt SVG Document</title>\n<desc>Generated with Qt</desc>\n<defs>\n</defs>\n<g fill=\"none\" stroke=\"black\" stroke-width=\"1\" fill-rule=\"evenodd\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" >\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"7\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M107,331 L508,38 L499.915,56.2928 M508,38 L488.115,40.1442\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"7\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<path vector-effect=\"none\" fill-rule=\"evenodd\" d=\"M122,46 L624,379 L604.039,377.759 M624,379 L615.094,361.092\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"#000000\" fill-opacity=\"0\" stroke=\"#ff00ff\" stroke-opacity=\"1\" stroke-width=\"6\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n<circle cx=\"315\" cy=\"176\" r=\"37\"/>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n\n<g fill=\"none\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-width=\"1\" stroke-linecap=\"square\" stroke-linejoin=\"bevel\" transform=\"matrix(1,0,0,1,0,0)\"\nfont-family=\"MS Shell Dlg 2\" font-size=\"8.25\" font-weight=\"400\" font-style=\"normal\" \n>\n</g>\n</g>\n</svg>\n",
+      "drawing_elements": [
+        {
+          "type": "ellipse",
+          "rect": [
+            278.0,
+            139.0,
+            74.0,
+            74.0
+          ],
+          "pen_color": "#ff00ff",
+          "pen_width": 6,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 122.0,
+              "y": 46.0
+            },
+            {
+              "type": 1,
+              "x": 624.0,
+              "y": 379.0
+            },
+            {
+              "type": 1,
+              "x": 604.0385539502769,
+              "y": 377.7587620679362
+            },
+            {
+              "type": 0,
+              "x": 624.0,
+              "y": 379.0
+            },
+            {
+              "type": 1,
+              "x": 615.0942205564465,
+              "y": 361.0922616586354
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 7,
+          "pen_style": 1,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "path",
+          "path_points": [
+            {
+              "type": 0,
+              "x": 107.0,
+              "y": 331.0
+            },
+            {
+              "type": 1,
+              "x": 508.0,
+              "y": 38.0
+            },
+            {
+              "type": 1,
+              "x": 499.9145976243499,
+              "y": 56.29279280000272
+            },
+            {
+              "type": 0,
+              "x": 508.0,
+              "y": 38.0
+            },
+            {
+              "type": 1,
+              "x": 488.1152755412075,
+              "y": 40.144232542869304
+            }
+          ],
+          "pen_color": "#000000",
+          "pen_width": 7,
+          "pen_style": 1,
+          "pos": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "num": 4,
+      "inter_dist": 0.0,
+      "observations": "",
+      "diagram": null,
+      "drawing_elements": []
+    }
+  ]
+}

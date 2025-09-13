@@ -220,20 +220,16 @@ class JPEGExporter:
         painter.setPen(QPen(Qt.black, 2))
         painter.drawRect(num_rect)
         
-        # Tailles de police responsive adaptées au nombre de vignettes
-        n = len(self.vignettes)
-        if n <= 3:
-            num_fs = max(16, min(24, int(rect.height() * 0.35)))
-            lab_fs = max(10, min(14, int(rect.height() * 0.20)))
-        elif n <= 6:
-            num_fs = max(14, min(20, int(rect.height() * 0.30)))
-            lab_fs = max(9, min(12, int(rect.height() * 0.18)))
-        elif n <= 10:
-            num_fs = max(12, min(16, int(rect.height() * 0.25)))
-            lab_fs = max(8, min(10, int(rect.height() * 0.15)))
-        else:
-            num_fs = max(10, min(14, int(rect.height() * 0.20)))
-            lab_fs = max(7, min(9, int(rect.height() * 0.12)))
+        # Tailles de police proportionnelles comme le PDF (basées sur la hauteur réelle)
+        def clamp(x, lo, hi):
+            return max(lo, min(hi, x))
+        
+        # Conversion approximative : 1 cm ≈ 28.35 pixels à 72 DPI, mais on ajuste pour 300 DPI
+        cm_to_px = 118  # Approximation pour 300 DPI
+        usable_h_cm = rect.height() / cm_to_px
+        
+        num_fs = int(clamp(usable_h_cm * 0.26 * 10, 12, 28))
+        lab_fs = int(clamp(usable_h_cm * 0.22 * 10, 10, 18))
         
         font = QFont("Arial", num_fs, QFont.Bold)
         painter.setFont(font)
@@ -263,16 +259,13 @@ class JPEGExporter:
         
         obs_hdr_h = min(40, int(rect.height() * 0.15))
         
-        # Taille de police responsive adaptée au nombre de vignettes
-        n = len(self.vignettes)
-        if n <= 3:
-            obs_fs = max(10, min(14, int(rect.height() * 0.18)))
-        elif n <= 6:
-            obs_fs = max(9, min(12, int(rect.height() * 0.16)))
-        elif n <= 10:
-            obs_fs = max(8, min(10, int(rect.height() * 0.14)))
-        else:
-            obs_fs = max(7, min(9, int(rect.height() * 0.12)))
+        # Taille de police proportionnelle comme le PDF
+        def clamp(x, lo, hi):
+            return max(lo, min(hi, x))
+        
+        cm_to_px = 118  # Approximation pour 300 DPI
+        usable_h_cm = rect.height() / cm_to_px
+        obs_fs = int(clamp(usable_h_cm * 0.18 * 10, 8, 16))
         
         # Titre
         title_rect = QRect(rect.x(), rect.y(), rect.width(), obs_hdr_h)

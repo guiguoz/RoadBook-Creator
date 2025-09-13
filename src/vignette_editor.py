@@ -18,7 +18,7 @@ class VignetteEditor(QDialog):
     WINDOW_HEIGHT = 650
     SCENE_WIDTH = 750
     SCENE_HEIGHT = 400
-    BALISE_RADIUS = 25
+    BALISE_RADIUS = 37
     BALISE_PEN_WIDTH = 6
     DEFAULT_LINE_WIDTHS = [3, 5, 7]
     

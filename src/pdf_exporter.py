@@ -197,8 +197,8 @@ class PDFExporter:
         g1, g2, g3 = (colors.Color(b[0], b[0], b[0]), colors.Color(b[1], b[1], b[1]), colors.Color(b[2], b[2], b[2]))
 
         num_para = Paragraph(f"<b>{int(v.num)}</b>", style_num)
-        int_para = Paragraph(f"Distance int.: {int(v.inter_dist)} m", style_lab)
-        tot_para = Paragraph(f"Distance totale: {int(cumul_val)} m", style_lab)
+        int_para = Paragraph(f"Distance int.:<br/>{int(v.inter_dist)} m", style_lab)
+        tot_para = Paragraph(f"Distance totale:<br/>{int(cumul_val)} m", style_lab)
 
         left_tbl = Table(
             [[num_para], [int_para], [tot_para]],
@@ -230,10 +230,12 @@ class PDFExporter:
         max_chars = 200
         if len(obs_text) > max_chars:
             obs_text = obs_text[:max_chars - 3] + "..."
-        obs_title_para = Paragraph("<b>Observations</b>", style_lab)
+        # Style spécifique pour le titre observations avec police plus petite
+        style_obs_title = ParagraphStyle(name='ObsTitle', parent=style_lab, fontSize=max(6, obs_fs-2), leading=max(7, obs_fs-1))
+        obs_title_para = Paragraph("<b>Observations</b>", style_obs_title)
         obs_para = Paragraph(obs_text, style_obs_dyn)
-        # Hauteur du titre d'observation
-        obs_hdr_h = min(0.4 * cm, usable_h * 0.15)
+        # Hauteur du titre d'observation (augmentée pour éviter le retour à la ligne)
+        obs_hdr_h = min(0.8 * cm, usable_h * 0.25)
         obs_tbl = Table(
             [[obs_title_para], [obs_para]],
             colWidths=[obs_w],

@@ -79,7 +79,6 @@ class RoadBookApp(QMainWindow):
         btn_delete = QPushButton('🗑️ Supprimer vignette', self)
 
         btn_export = QPushButton('📄 Exporter PDF', self)
-        btn_export_jpeg = QPushButton('🖼️ Exporter JPEG', self)
         btn_save = QPushButton('💾 Sauvegarder', self)
         btn_open = QPushButton('📂 Ouvrir', self)
         btn_infos = QPushButton('ℹ️ Infos', self)
@@ -93,14 +92,7 @@ class RoadBookApp(QMainWindow):
             }
         """)
         
-        btn_export_jpeg.setStyleSheet("""
-            QPushButton {
-                background-color: #FF9800;
-            }
-            QPushButton:hover {
-                background-color: #F57C00;
-            }
-        """)
+
         
         btn_infos.setStyleSheet("""
             QPushButton {
@@ -125,7 +117,6 @@ class RoadBookApp(QMainWindow):
         btn_delete.clicked.connect(self.deleteSelected)
 
         btn_export.clicked.connect(self.exportPDF)
-        btn_export_jpeg.clicked.connect(self.exportJPEG)
         btn_save.clicked.connect(self.saveRoadbook)
         btn_open.clicked.connect(self.openRoadbook)
         btn_infos.clicked.connect(self.showInfos)
@@ -135,7 +126,6 @@ class RoadBookApp(QMainWindow):
         toolbar.addWidget(btn_delete)
 
         toolbar.addWidget(btn_export)
-        toolbar.addWidget(btn_export_jpeg)
         toolbar.addWidget(btn_save)
         toolbar.addWidget(btn_open)
         toolbar.addWidget(btn_infos)
@@ -427,30 +417,7 @@ class RoadBookApp(QMainWindow):
             QMessageBox.critical(self, "Erreur d'export", 
                                f"Une erreur s'est produite lors de l'export PDF :\n{str(e)}")
 
-    def exportJPEG(self):
-        try:
-            if not self.vignettes:
-                QMessageBox.warning(self, "Attention", 
-                                  "Aucune vignette à exporter. Ajoutez d'abord des vignettes au road book.")
-                return
-            
-            from jpeg_exporter import JPEGExporter
-            exporter = JPEGExporter(self.vignettes)
-            filename = exporter.export()
-            
-            if os.path.exists(filename):
-                QMessageBox.information(self, "Export terminé", 
-                                      f"Road book exporté en JPEG avec succès vers :\n{filename}")
-            else:
-                QMessageBox.warning(self, "Erreur d'export", 
-                                  "Le fichier JPEG n'a pas pu être créé.")
-                
-        except Exception as e:
-            logging.error(f"JPEG export failed: {e}", exc_info=True)
-            QMessageBox.critical(self, "Erreur d'export", 
-                               f"Une erreur s'est produite lors de l'export JPEG :\n{str(e)}\n\n"
-                               "Astuce: Installez pdf2image ou PyMuPDF pour une meilleure conversion :\n"
-                               "pip install pdf2image\nou\npip install PyMuPDF")
+
 
     def showInfos(self):
         info_text = """
