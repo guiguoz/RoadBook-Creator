@@ -11,7 +11,7 @@
 
 **Aucune configuration requise !** L'application installe automatiquement tout ce dont elle a besoin.
 
-1. **📥 Télécharger** le [dernier release](https://github.com/username/roadbook-pro/releases/latest)
+1. **📥 Télécharger** l' [archive](https://github.com/guiguoz/RoadBook-Creator/archive/refs/heads/main.zip)
 2. **📂 Extraire** le dossier ZIP
 3. **🖱️ Double-cliquer** sur `launch.bat`
 4. **✨ L'application se lance** automatiquement !
