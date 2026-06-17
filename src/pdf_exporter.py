@@ -1,7 +1,7 @@
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, PageBreak, KeepInFrame
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, PageBreak, KeepInFrame, KeepTogether
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 import io
 import os
@@ -133,7 +133,7 @@ class PDFExporter:
                     rowHeights=[row_h] * rows_on_page
                 )
                 page_table.setStyle(TableStyle(main_style_cmds))
-                elements.append(page_table)
+                elements.append(KeepTogether([page_table]))
 
             doc.build(elements)
             return filename
