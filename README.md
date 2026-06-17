@@ -43,7 +43,7 @@
 ### 💾 **Sauvegarde et Export**
 - **Sauvegarde automatique** : Toutes les 5 minutes
 - **Format .rbk** : Projets complets avec tous les éléments
-- **Export PDF** : Mise en page professionnelle optimisée
+- **Export PDF** : Mise en page multi-pages automatique (24 vignettes/page, cases de taille identique sur toutes les pages)
 - **Export JPEG** : Images haute qualité pour partage
 
 ### 🔧 **Fonctionnalités Techniques**
