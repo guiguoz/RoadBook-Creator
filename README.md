@@ -2,7 +2,7 @@
 
 > **Professional roadbook editor for orienteering, raids, and navigation sports**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/username/roadbook-pro/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/guiguoz/RoadBook-Creator/releases)
 [![Python](https://img.shields.io/badge/python-3.7+-green.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-Open%20Source-orange.svg)](#license)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
