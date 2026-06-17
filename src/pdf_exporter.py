@@ -84,7 +84,7 @@ class PDFExporter:
             MAX_ROWS_PER_PAGE = 12
             columns = 2 if n > 4 else 1
             max_per_page = MAX_ROWS_PER_PAGE * columns
-            col_w = (content_width - 1) / columns
+            col_w = content_width / columns
             row_h = (content_height - 1) / MAX_ROWS_PER_PAGE
 
             main_style_cmds = [
@@ -199,7 +199,7 @@ class PDFExporter:
         left_tbl = Table(
             [[num_para], [int_para], [tot_para]],
             colWidths=[left_w],
-            rowHeights=[usable_h*0.40, usable_h*0.30, usable_h*0.30]
+            rowHeights=[usable_h*0.30, usable_h*0.30, usable_h*0.40]
         )
         left_tbl.setStyle(TableStyle([
             ('BACKGROUND', (0, 0), (0, 0), g1),
