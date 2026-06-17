@@ -1,7 +1,7 @@
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, PageBreak, KeepInFrame
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 import io
 import os
@@ -131,7 +131,9 @@ class PDFExporter:
                     rowHeights=[row_h] * rows_on_page
                 )
                 page_table.setStyle(TableStyle(main_style_cmds))
-                elements.append(page_table)
+                # KeepInFrame empêche Platypus de scinder la table sur la page suivante
+                kif = KeepInFrame(content_width, content_height, [page_table], mode='truncate')
+                elements.append(kif)
 
             doc.build(elements)
             return filename
@@ -171,7 +173,7 @@ class PDFExporter:
         obs_fs = int(clamp(usable_h * 0.18 / cm * 10, 6, 12))
 
         style_num = ParagraphStyle(name='NumBox', parent=style_header, fontSize=num_fs, leading=num_fs+1, alignment=1)
-        style_lab = ParagraphStyle(name='LabSmall', parent=style_header, fontSize=lab_fs, leading=lab_fs+1, alignment=1)
+        style_lab = ParagraphStyle(name='LabSmall', parent=style_header, fontSize=lab_fs, leading=lab_fs, alignment=1, spaceAfter=0, spaceBefore=0)
         style_obs_dyn = ParagraphStyle(name='ObsDyn', parent=style_obs, fontSize=obs_fs, leading=obs_fs+1)
 
         # Largeurs des colonnes: gauche ~18%, schéma ~60%, obs ~22%
