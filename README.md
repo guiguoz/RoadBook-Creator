@@ -107,7 +107,7 @@ Les logs sont stockés dans `logs/roadbook_YYYYMMDD.log` pour le diagnostic en c
 **Projet mené par** : Guillaume Lemiègre  
 **Développé par** : Intelligence Artificielle  
 **Technologies** : Python 3.7+, PyQt5, ReportLab, SVG  
-**Version** : 1.0.0 (Septembre 2025)
+**Version** : 1.1.0 (Juin 2026)
 
 ---
 
