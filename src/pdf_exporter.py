@@ -1,7 +1,7 @@
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, KeepInFrame
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, PageBreak
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 import io
 import os
@@ -78,55 +78,14 @@ class PDFExporter:
 
             n = len(self.vignettes)
 
-            # Logique optimisée pour favoriser 2 colonnes quand c'est plus lisible
-            if n <= 1:
-                columns = 1
-                rows_per_col = max(1, n)
-            elif n <= 4:
-                # 2-4 vignettes: 1 colonne pour plus de place
-                columns = 1
-                rows_per_col = n
-            else:
-                # 5+ vignettes: 2 colonnes pour optimiser l'espace
-                columns = 2
-                rows_per_col = math.ceil(n / 2)
-
-            row_h = content_height / max(1, rows_per_col)
+            # Pagination : 16 lignes × 2 colonnes = 32 vignettes/page max
+            # row_h fixe pour toutes les pages → taille de case homogène dans tout le document
+            MAX_ROWS_PER_PAGE = 16
+            columns = 2 if n > 4 else 1
+            max_per_page = MAX_ROWS_PER_PAGE * columns
             col_w = content_width / columns
+            row_h = content_height / MAX_ROWS_PER_PAGE
 
-            # Construire la Table principale (rows_per_col x columns)
-            main_rows = []
-
-            # Préparer les index par colonne (remplissage vertical, puis on passe à la colonne suivante)
-            # Col 0: indices 0..rows_per_col-1, Col 1: indices rows_per_col..2*rows_per_col-1, etc.
-            for r in range(rows_per_col):
-                row_cells = []
-                for c in range(columns):
-                    idx = c * rows_per_col + r
-                    if idx < n:
-                        v = self.vignettes[idx]
-                        cumul_val = cumul_dists[idx]
-                        cell = self._build_vignette_cell(
-                            v,
-                            cumul_val,
-                            col_w,
-                            row_h,
-                            style_header,
-                            style_obs
-                        )
-                        row_cells.append(cell)
-                    else:
-                        row_cells.append("")
-                main_rows.append(row_cells)
-
-            # Table principale
-            main_table = Table(
-                main_rows,
-                colWidths=[col_w] * columns,
-                rowHeights=[row_h] * rows_per_col
-            )
-
-            # Style de la table principale
             main_style_cmds = [
                 ('GRID', (0, 0), (-1, -1), 0.5, colors.black),
                 ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
@@ -135,11 +94,45 @@ class PDFExporter:
                 ('TOPPADDING', (0, 0), (-1, -1), 2),
                 ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
             ]
-            main_table.setStyle(TableStyle(main_style_cmds))
 
-            # Forcer le contenu à tenir sur une seule page A4 en le réduisant si nécessaire
-            kif = KeepInFrame(content_width, content_height, [main_table], mode='shrink')
-            elements = [kif]
+            # Découpage en lots en conservant l'index global pour cumul_dists
+            all_indexed = list(enumerate(self.vignettes))
+            page_batches = [
+                all_indexed[i:i + max_per_page]
+                for i in range(0, n, max_per_page)
+            ]
+
+            elements = []
+            for page_idx, indexed_batch in enumerate(page_batches):
+                if page_idx > 0:
+                    elements.append(PageBreak())
+
+                n_page = len(indexed_batch)
+                rows_on_page = math.ceil(n_page / columns)
+
+                main_rows = []
+                for r in range(rows_on_page):
+                    row_cells = []
+                    for c in range(columns):
+                        slot = c * rows_on_page + r
+                        if slot < n_page:
+                            global_idx, v = indexed_batch[slot]
+                            cell = self._build_vignette_cell(
+                                v, cumul_dists[global_idx], col_w, row_h, style_header, style_obs
+                            )
+                            row_cells.append(cell)
+                        else:
+                            row_cells.append("")
+                    main_rows.append(row_cells)
+
+                page_table = Table(
+                    main_rows,
+                    colWidths=[col_w] * columns,
+                    rowHeights=[row_h] * rows_on_page
+                )
+                page_table.setStyle(TableStyle(main_style_cmds))
+                elements.append(page_table)
+
             doc.build(elements)
             return filename
 

@@ -48,7 +48,6 @@
 
 ### 🔧 **Fonctionnalités Techniques**
 - **Installation automatique Python** : Aucune intervention utilisateur
-- **Vérification des mises à jour** : Notification automatique
 - **Logs détaillés** : Diagnostic et support facilités
 - **Interface française** : Terminologie orienteering
 
@@ -85,18 +84,12 @@ roadbook_app/
 │   ├── widgets.py          # Composants UI
 │   └── logging_config.py   # Configuration logs
 ├── launch.bat              # Lanceur automatique
-├── update.bat             # Script de mise à jour
 └── version.json           # Informations version
 ```
 
 ## 🔄 **Mises à Jour**
 
-L'application vérifie automatiquement les mises à jour au démarrage et vous notifie quand une nouvelle version est disponible.
-
-**Mise à jour manuelle** :
-1. Télécharger la nouvelle version
-2. Extraire et remplacer les fichiers
-3. Vos projets sont automatiquement préservés
+Pour mettre à jour l'application, téléchargez la nouvelle version, extrayez le ZIP et remplacez les fichiers. Vos projets (dossier `projects/`) sont préservés.
 
 ## 📝 **Logs et Support**
 
