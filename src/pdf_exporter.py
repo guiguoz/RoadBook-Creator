@@ -79,13 +79,16 @@ class PDFExporter:
             n = len(self.vignettes)
 
             # Pagination : 12 lignes × 2 colonnes = 24 vignettes/page max
-            # row_h ≈ 2.22cm → assez pour 2 lignes de texte dans les slots "Distance int./totale"
-            # -1pt sur hauteur et largeur : évite que la bordure inférieure/droite soit clippée par KeepInFrame
+            # SimpleDocTemplate crée un Frame avec topPadding=6 + bottomPadding=6 (défaut ReportLab).
+            # La hauteur réellement disponible pour les flowables = content_height - 12.
+            # Sans cette correction, 12 × row_h > available_height → Platypus split la table (11+1).
+            FRAME_V_PADDING = 12  # topPadding=6 + bottomPadding=6
             MAX_ROWS_PER_PAGE = 12
             columns = 2 if n > 4 else 1
             max_per_page = MAX_ROWS_PER_PAGE * columns
             col_w = content_width / columns
-            row_h = (content_height - 1) / MAX_ROWS_PER_PAGE
+            effective_height = content_height - FRAME_V_PADDING
+            row_h = (effective_height - 1) / MAX_ROWS_PER_PAGE
 
             main_style_cmds = [
                 ('GRID', (0, 0), (-1, -1), 0.5, colors.black),
