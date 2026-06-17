@@ -165,6 +165,8 @@ class PDFExporter:
         inner_pad = 2
         usable_w = max(1, cell_w - 2 * inner_pad)
         usable_h = max(1, cell_h - 2 * inner_pad)
+        row_v_pad = 2 + 2  # TOPPADDING + BOTTOMPADDING du row_tbl col 0 (définis ~80 lignes plus bas)
+        inner_cell_h = max(1, usable_h - row_v_pad)
 
         # Tailles de police "responsive"
         def clamp(x, lo, hi):
@@ -199,7 +201,7 @@ class PDFExporter:
         left_tbl = Table(
             [[num_para], [int_para], [tot_para]],
             colWidths=[left_w],
-            rowHeights=[usable_h*0.30, usable_h*0.30, usable_h*0.40]
+            rowHeights=[inner_cell_h*0.30, inner_cell_h*0.30, inner_cell_h*0.40]
         )
         left_tbl.setStyle(TableStyle([
             ('BACKGROUND', (0, 0), (0, 0), g1),
@@ -231,11 +233,13 @@ class PDFExporter:
         obs_title_para = Paragraph("<b>Observations</b>", style_obs_title)
         obs_para = Paragraph(obs_text, style_obs_dyn)
         # Hauteur du titre d'observation (augmentée pour éviter le retour à la ligne)
-        obs_hdr_h = min(0.8 * cm, usable_h * 0.25)
+        obs_hdr_h = min(0.8 * cm, inner_cell_h * 0.25)
+        obs_content_h = max(1, inner_cell_h - obs_hdr_h)
+        obs_flow = KeepInFrame(max(1, obs_w - 2), obs_content_h, [obs_para], mode='truncate')
         obs_tbl = Table(
-            [[obs_title_para], [obs_para]],
+            [[obs_title_para], [obs_flow]],
             colWidths=[obs_w],
-            rowHeights=[obs_hdr_h, max(1, usable_h - obs_hdr_h)]
+            rowHeights=[obs_hdr_h, obs_content_h]
         )
         obs_tbl.setStyle(TableStyle([
             ('VALIGN', (0, 0), (-1, -1), 'TOP'),
