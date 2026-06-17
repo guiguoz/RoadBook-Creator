@@ -1,7 +1,7 @@
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, PageBreak, KeepInFrame
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, PageBreak, KeepInFrame, KeepTogether
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 import io
 import os
@@ -132,9 +132,7 @@ class PDFExporter:
                     rowHeights=[row_h] * rows_on_page
                 )
                 page_table.setStyle(TableStyle(main_style_cmds))
-                # KeepInFrame empêche Platypus de scinder la table sur la page suivante
-                kif = KeepInFrame(content_width, content_height, [page_table], mode='truncate')
-                elements.append(kif)
+                elements.append(KeepTogether([page_table]))
 
             doc.build(elements)
             return filename
@@ -235,7 +233,7 @@ class PDFExporter:
         # Hauteur du titre d'observation (augmentée pour éviter le retour à la ligne)
         obs_hdr_h = min(0.8 * cm, inner_cell_h * 0.25)
         obs_content_h = max(1, inner_cell_h - obs_hdr_h)
-        obs_flow = KeepInFrame(max(1, obs_w - 2), obs_content_h, [obs_para], mode='truncate')
+        obs_flow = KeepInFrame(obs_w, obs_content_h, [obs_para], mode='truncate')
         obs_tbl = Table(
             [[obs_title_para], [obs_flow]],
             colWidths=[obs_w],
