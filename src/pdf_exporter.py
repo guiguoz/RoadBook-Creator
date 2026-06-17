@@ -78,13 +78,14 @@ class PDFExporter:
 
             n = len(self.vignettes)
 
-            # Pagination : 16 lignes × 2 colonnes = 32 vignettes/page max
-            # row_h fixe pour toutes les pages → taille de case homogène dans tout le document
-            MAX_ROWS_PER_PAGE = 16
+            # Pagination : 12 lignes × 2 colonnes = 24 vignettes/page max
+            # row_h ≈ 2.22cm → assez pour 2 lignes de texte dans les slots "Distance int./totale"
+            # -1pt sur hauteur et largeur : évite que la bordure inférieure/droite soit clippée par KeepInFrame
+            MAX_ROWS_PER_PAGE = 12
             columns = 2 if n > 4 else 1
             max_per_page = MAX_ROWS_PER_PAGE * columns
-            col_w = content_width / columns
-            row_h = content_height / MAX_ROWS_PER_PAGE
+            col_w = (content_width - 1) / columns
+            row_h = (content_height - 1) / MAX_ROWS_PER_PAGE
 
             main_style_cmds = [
                 ('GRID', (0, 0), (-1, -1), 0.5, colors.black),
